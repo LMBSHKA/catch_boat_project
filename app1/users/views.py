@@ -32,11 +32,7 @@ def login(request):
     else:
         form = UserLoginForm()
 
-    context = {
-        'title': 'Home - Авторизация',
-        'form': form
-    }
-    return render(request, 'users/login.html', context)
+    return render(request, 'users/login.html')
 
 
 def registration(request):
@@ -55,12 +51,7 @@ def registration(request):
             return HttpResponseRedirect(reverse('main:index'))
     else:
         form = UserRegistrationForm()
-    
-    context = {
-        'title': 'Home - Регистрация',
-        'form': form
-    }
-    return render(request, 'users/registration.html', context)
+    return render(request, 'users/registration.html')
 
 @login_required
 def profile(request):

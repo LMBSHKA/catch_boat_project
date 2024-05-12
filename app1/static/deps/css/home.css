@@ -61,7 +61,6 @@ body{
     width: 88%;/*1345px;*/
     height: 49px;
     border:none;
-    
     background: #1C5D99;
     border-radius: 15px;
 }
@@ -72,9 +71,14 @@ body{
     top: 9%;
     color: #ffffff;
     font-size: 35px;
-    font-family: Molot;
+
     letter-spacing: 3px;
 }
+
+/*.a_logo_menu{
+    text-decoration: none;
+    color: #ffffff;
+}*/
 
 .menu{
     font-weight: bold;
@@ -422,7 +426,7 @@ button:hover:before {
     height: 500px;
 }
 
-@media (max-width: 1200px){
+/*@media (max-width: 1200px){
     .logo-menu{
         letter-spacing: 40px; 
     }
