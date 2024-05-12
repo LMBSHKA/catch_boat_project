@@ -8,12 +8,12 @@
 }
 .register_menu{
     position:absolute;
-    width:510px;
-    height:400px;
-    border-radius:15px;
-    padding:20px 30px;
-    background:#F1FEFF; 
-    top: 50%;
+    width: 510px;
+    height: 400px;
+    border-radius: 15px;
+    padding: 20px 30px;
+    background: #F1FEFF; 
+    top: 50%;/*50%*/
     left: 50%;
     margin: -180px 0 0 -250px;
 }
@@ -88,7 +88,7 @@
 }
 .create_acc{
     position:absolute;
-    background:#1C5D99;
+    background: #1C5D99;/*#1C5D99;*/
     padding:10px 30px;
     border-radius:46px;
     width:372px;

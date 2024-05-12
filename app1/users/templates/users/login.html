@@ -5,8 +5,14 @@
 {% block css %}
     <link rel="stylesheet" href="{% static "deps\css\login.css" %}">
 {% endblock  %}
+
 {% block content %}
+<form  action="{% url "user:login" %}" method="post">
     <div class="register_menu">
+        {% csrf_token %}
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value={{request.GET.next}}>
+        {% endif %}
         <div class="register_menu_enter">
             <a class="a_enter" href="">Войти</a>
         </div>
@@ -15,9 +21,14 @@
             href="{% url "user:registration" %}">Регистрация</a>
         </div>
         
-        <input type="text" class="email" placeholder="Почта">
-        <input type="text" class="password" placeholder="Пароль">
+        <input type="text" class="email"
+        value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
+        name="username" id="id_username"
+        placeholder="Ник">
+
+        <input type="password" class="password" name="password" id="id_password" placeholder="Пароль">
         
-            <button class="enter">Войти</button>
+            <button type="submit" class="enter">Войти</button>
     </div>
+</form>
 {% endblock  %}
