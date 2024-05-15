@@ -10,16 +10,19 @@
     </h1>
     <p>
         <div class="description text">
-            <strong style="font-size: 38.55px">делитесь свомим впечатлениями от рабалок на комплексной платформе</strong>
+            делитесь свомим впечатлениями от рабалок на комплексной платформе
+        </div>
             <br> 
-            <div class="ditailed_description">очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт 
-            </div>
+        <div class="ditailed_description">
+            очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт очень крутой сайт 
         </div>
     </p>
+    {% if not user.is_authenticated %}
     <div>
-        <a href="{% url "user:login" %}"><button class="login text_login">войти</button></a>
-        <a href="{% url "user:registration" %}"><button class="registration text_registration"> регистрация </button></a>
+        <a href="{% url "user:login" %}"><button class="login text_login button_login_reg">войти</button></a>
+        <a href="{% url "user:registration" %}"><button class="registration text_registration button_login_reg"> регистрация </button></a>
     </div>
+    {% endif %}
     <div class="river_img">
         <img src="{% static "deps/image/river.png" %}">
     </div>

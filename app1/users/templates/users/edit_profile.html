@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static "deps/css/editor.css" %}">
+{% endblock  %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ form.as_p }}
+    <button type="submit" class="submit_editor">Подтвердить изменение профиля</button>
+</form>
+{% endblock  %}

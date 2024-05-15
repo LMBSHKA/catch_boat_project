@@ -1,0 +1,11 @@
+.input_name{
+    position: relative;
+    top: 100px;
+    left: 50%;
+}
+
+.submit_editor{
+    position: relative;
+    top: 200px;
+    left: 50%;
+}
