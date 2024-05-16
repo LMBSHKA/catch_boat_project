@@ -1,15 +1,20 @@
 {% extends "base.html" %}
 
 {% load static %}
+
 {% block css %}
 <link rel="stylesheet" href="{% static "deps/css/editor.css" %}">
 {% endblock  %}
 
 {% block content %}
+<h1>Edit Profile</h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ user_form.as_p }}
-    {{ form.as_p }}
+    <input type="text" class="edit_first_name" name="first_name" placeholder="Имя" value="{{form.first_name.value}}">
+    <input type="text" class="edit_username" name="username" placeholder="Ник" value="{{form.username.value}}">
+    {{form.email}}
+    {{form.last_name}}
+    {{form.about}}
     <button type="submit" class="submit_editor">Подтвердить изменение профиля</button>
 </form>
 {% endblock  %}

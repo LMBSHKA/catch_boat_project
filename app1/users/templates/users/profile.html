@@ -9,17 +9,19 @@
 <form action="{% url "users:profile" %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="text profile">
-            <div class="profile_photo"><a href="{% url "user:editor" %}">
-                {% if user.image %}
-                    <img src="{{ user.image.url }}"
-                        alt="Аватар пользователя" class="img-fluid rounded-circle" id="profile_in_photo">
-                {% else %}
-                    <img src="{% static "deps/image/defoult_profile.jpg" %}"
-                        alt="Аватар пользователя" class="img-fluid rounded-circle" id="profile_in_photo">
-                {% endif %}
+            <div class="profile_photo">
+                <a href="{% url "users:edit_profile" %}">
+                    {% if user.image %}
+                        <img src="{{ user.image.url }}"
+                            alt="Аватар пользователя" class="img-fluid rounded-circle" id="profile_in_photo">
+                    {% else %}
+                        <img src="{% static "deps/image/defoult_profile.jpg" %}"
+                            alt="Аватар пользователя" class="img-fluid rounded-circle" id="profile_in_photo">
+                    {% endif %}
             </a></div>
             <div class="profile_information">
                 <div class="profile_name">
+                    <p type="text", name="first_name" required>{{form.first_name.value}}</p>
                     <p type="text" id="id_username" name="username"required> {{form.username.value}} </p>
                 </div>
                 <div class="profile_description text">

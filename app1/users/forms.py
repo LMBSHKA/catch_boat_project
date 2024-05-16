@@ -1,7 +1,11 @@
+from pyexpat.errors import messages
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
+from django.urls import reverse_lazy
 from users.models import User
 
+
+    
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField()                              
     password = forms.CharField()
@@ -44,44 +48,14 @@ class ProfileForm(UserChangeForm):
     #last_name = forms.CharField()
     username = forms.CharField()
     #email = forms.CharField()
-""""
-class UserUpdateForm(forms.ModelForm):
 
-
+class EditProfileForm(forms.ModelForm):
+    email = forms.EmailField(max_length=100, widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    username = forms.CharField(max_length=40, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    first_name=forms.CharField(max_length=40, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name=forms.CharField(max_length=40, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    about = forms.CharField(max_length=300, widget=forms.TextInput(attrs={'class': 'form-control'}))
     class Meta:
-        model = User
-        fields = ('username', 'email', 'first_name', 'last_name')
+        model=User
+        fields=("email", "username", "first_name", "last_name", "about")
 
-    def __init__(self, *args, **kwargs):
-
-        super().__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({
-                'class': 'form-control',
-                'autocomplete': 'off'
-            })
-
-    def clean_email(self):
-
-        email = self.cleaned_data.get('email')
-        username = self.cleaned_data.get('username')
-        if email and User.objects.filter(email=email).exclude(username=username).exists():
-            raise forms.ValidationError('Email адрес должен быть уникальным')
-        return email
-
-
-class ProfileUpdateForm(forms.ModelForm):
-
-    class Meta:
-        model = User
-        fields = ('slug', 'birth_date', 'bio', 'avatar')
-
-    def __init__(self, *args, **kwargs):
-
-        super().__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update({
-                'class': 'form-control',
-                'autocomplete': 'off'
-            })
-"""
