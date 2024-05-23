@@ -137,7 +137,7 @@ body{
     position: relative;
     top: -40px;
     left: 80px;
-    max-width: 660px;
+    max-width: 700px;
     font-size: 100%;
 }
 
@@ -476,8 +476,8 @@ button.text{
 
 .text_on_mountains{
     position: absolute;
-    top: 50px;
-    left: 55px;
+    top: 40px;
+    left: 45px;
     font-size: 40px;
     line-height: 36px;
     color: #FFFFFF;
@@ -486,10 +486,10 @@ button.text{
 
 .big_text{
     position: absolute;
-    top: 150px;
-    left: 55px;
+    top: 140px;
+    left: 45px;
     color: #FFFFFF;
-    font-size: 135px;
+    font-size: 133px;
     font-weight: bolder;
     line-height: 168.68px;
 }

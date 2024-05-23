@@ -22,7 +22,7 @@
 .profile_information{
     position: absolute;
     border:none;
-    width:629px;
+    width:600px;
     height:86px;
     top:57px;
     left:213px;
@@ -32,7 +32,7 @@
     position: absolute;
     border:none;
     top:-50px;
-    width:319px;
+    width:1000px;
     height:28px;
     font-size: 33px;
     font-weight:900; 
@@ -40,11 +40,18 @@
 .profile_description{
     position: absolute;
     border:none;
-    top:20px;
+    top:24px;
     width:629px;
     height:38px;
     font-size: 20px;
     font-weight:500; 
+}
+
+.profile_username{
+    position: relative;
+    font-size: 18px;
+    top: 3px;
+    width: 1000px;
 }
 
 .achievements{
@@ -54,7 +61,7 @@
     top:100px;
     left:-360px;
     border-radius: 30px;
-    background-color:#639295;
+    background-color: #476163;
     margin:auto;
 }
 .achievements_header{
@@ -64,6 +71,12 @@
     top:-35px;
     left:16px;
     color: #FFFFFF;
+}
+
+.achievements_medal{
+    position: relative;
+    top: 50px;
+    left: 20px;
 }
 /*THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 .rectangle_equpment{

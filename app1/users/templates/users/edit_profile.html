@@ -11,10 +11,16 @@
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="text" class="edit_first_name" name="first_name" placeholder="Имя" value="{{form.first_name.value}}">
-    <input type="text" class="edit_username" name="username" placeholder="Ник" value="{{form.username.value}}">
+    <input type="text" class="edit_username" name="username" placeholder="Ник" value="{{form.username.value}}" required>
     {{form.email}}
     {{form.last_name}}
-    {{form.about}}
-    <button type="submit" class="submit_editor">Подтвердить изменение профиля</button>
+    <input type="text" name="about" placeholder="Расскажите о себе" value="{{form.about.value}}" required>
+    <input type="file" id="id_image"
+    name='image'
+    accept="image/*">
+    {% if form.image.errors %}
+    <div class="alert alert-danger alert-dismissible fade show">{{form.image.errors}}</div>
+    {% endif %}
+    <button type="submit" class="submit_editor text">Подтвердить изменение профиля</button>
 </form>
 {% endblock  %}
