@@ -5,7 +5,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 
-from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm, EditProfileForm
+from users.forms import ProfileForm, UploadForm, UserLoginForm, UserRegistrationForm, EditProfileForm
+from users.models import Upload_images, User
 
 class UserEditView(generic.UpdateView):
     form_class = EditProfileForm
@@ -70,12 +71,26 @@ def profile(request):
             return HttpResponseRedirect(reverse('user:profile'))
     else:
         form = ProfileForm(instance=request.user)
-
+    users_uploads = Upload_images.objects.filter(user_id=request.user.id)
     context = {
         'form': form,
+        'users_uploads': users_uploads,
     }
     return render(request, 'users/profile.html', context)
 
+def list_images(request):
+    if request.method == "POST":
+        Upload_images.objects.create(user_id=request.user.id,
+                                     image=request.FILES.get('image'))
+        #form = UploadForm(request.POST, request.FILES)
+        #if form.is_valid():
+            #form.save()
+   # else:
+        #context = {'form': UploadForm(request.POST, request.FILES)}
+        #return render(request, 'users/list.html', context)
+    users_uploads = Upload_images.objects.filter(user_id=request.user.id)
+    context = {'form': UploadForm(), 'users_uploads': users_uploads, 'cur_user': request.user.id}
+    return render(request, 'users/list.html', context)
 
 
 @login_required

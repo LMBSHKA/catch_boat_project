@@ -7,6 +7,7 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=10, blank=True, null=True)
     about = models.CharField(max_length= 300, blank=True, null=True)
     first_name = models.CharField(max_length=100, blank=True, null=True)
+    cat = models.ForeignKey('Upload_images', on_delete=models.DO_NOTHING, null=True)
 
     class Meta:
         db_table = 'user'
@@ -15,3 +16,7 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+
+class Upload_images(models.Model):
+    user_id = models.CharField(max_length=20, null=True, blank=True)
+    image = models.ImageField(upload_to="images")

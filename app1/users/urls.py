@@ -1,6 +1,7 @@
 from django.urls import path
+from app import settings
 from users import views
-
+from django.conf.urls.static import static
 
 app_name = 'users'
 
@@ -10,4 +11,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('logout/', views.logout, name='logout'),
     path('edit_profile/', views.UserEditView.as_view(), name='edit_profile'),
+    path('list/', views.list_images, name='list_images')
 ]

@@ -2,7 +2,7 @@ from pyexpat.errors import messages
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
 from django.urls import reverse_lazy
-from users.models import User
+from users.models import Upload_images, User
 
 
     
@@ -33,6 +33,12 @@ class UserRegistrationForm(UserCreationForm):
     password1 = forms.CharField()
     password2 = forms.CharField()
 
+
+class UploadForm(forms.ModelForm):
+    class Meta:
+        model = Upload_images
+        fields={'image'}
+        
 class ProfileForm(UserChangeForm):
     class Meta:
         model = User
@@ -49,6 +55,7 @@ class ProfileForm(UserChangeForm):
     last_name = forms.CharField()
     username = forms.CharField()
     about = forms.CharField()
+    
     #email = forms.CharField()
 
 class EditProfileForm(forms.ModelForm):

@@ -6,7 +6,7 @@
 {% endblock  %}
 
 {% block content %}
-<form action="{% url "users:profile" %}" method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="text profile">
             <div class="profile_photo">
@@ -60,4 +60,7 @@
         </div>
     </div>
 </form>
+{% for image in users_uploads %}
+    <img src="{{image.image.url}}">
+{% endfor %}
 {% endblock  %}
