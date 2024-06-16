@@ -72,16 +72,21 @@ def profile(request):
     else:
         form = ProfileForm(instance=request.user)
     users_uploads = Upload_images.objects.filter(user_id=request.user.id)
+    count_default = Upload_images.objects.filter(user_id=request.user.id, category="defoult").count()
+    count_achive = Upload_images.objects.filter(user_id=request.user.id, category="achivements").count()
+    all_count = count_default + count_achive
     context = {
         'form': form,
         'users_uploads': users_uploads,
+        'count': all_count,
     }
     return render(request, 'users/profile.html', context)
 
 def list_images(request):
     if request.method == "POST":
         Upload_images.objects.create(user_id=request.user.id,
-                                     image=request.FILES.get('image'))
+                                     image=request.FILES.get('image'),
+                                     category="defoult")
         #form = UploadForm(request.POST, request.FILES)
         #if form.is_valid():
             #form.save()
@@ -89,9 +94,21 @@ def list_images(request):
         #context = {'form': UploadForm(request.POST, request.FILES)}
         #return render(request, 'users/list.html', context)
     users_uploads = Upload_images.objects.filter(user_id=request.user.id)
-    context = {'form': UploadForm(), 'users_uploads': users_uploads, 'cur_user': request.user.id}
+    context = {'form': UploadForm(), 'users_uploads': users_uploads}
     return render(request, 'users/list.html', context)
 
+def list_images_achivements(request):
+    if request.method == "POST":
+        Upload_images.objects.create(
+            user_id=request.user.id,
+            image=request.FILES.get('image'),
+            category='achivements')
+    users_uploads = Upload_images.objects.filter(user_id=request.user.id)
+    context = {'form': UploadForm(), 'users_uploads': users_uploads }
+    return render(request, 'users/list_achive.html', context)
+    
+def equipments(request):
+    return render(request, 'users/equipments.html')
 
 @login_required
 def logout(request):

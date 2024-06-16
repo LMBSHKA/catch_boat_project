@@ -10,36 +10,43 @@
     {% csrf_token %}
     <div class="text profile">
             <div class="profile_photo">
-                <a href="{% url "users:edit_profile" %}">
-                    {% if user.image %}
-                        <img src="{{ user.image.url }}"
-                            alt="Аватар пользователя" class="img-fluid rounded-circle" id="profile_in_photo">
-                    {% else %}
-                        <img src="{% static "deps/image/defoult_profile.jpg" %}"
-                            alt="Аватар пользователя" class="img-fluid rounded-circle" id="profile_in_photo">
-                    {% endif %}
-
-            </a></div>
+                {% if user.image %}
+                    <img src="{{ user.image.url }}"
+                        alt="Аватар пользователя" class="img-fluid rounded-circle" id="profile_in_photo">
+                {% else %}
+                    <img src="{% static "deps/image/defoult_profile.jpg" %}"
+                        alt="Аватар пользователя" class="img-fluid rounded-circle" id="profile_in_photo">
+                {% endif %}
+            </div>
             <div class="profile_information">
-                <p class="profile_name" type="text", name="first_name" required>{{form.first_name.value}} {{form.last_name.value}}</p>
+                <p class="profile_name" type="text", name="first_name" required>{{form.first_name.value|default_if_none:' '}} {{form.last_name.value|default_if_none:' '}}</p>
                 <p class="profile_username" type="text" id="id_username" name="username"required> {{form.username.value}} </p>
                 <div class="profile_description text">
-                    <p>{{form.about.value}}</p>
+                    <p>{{form.about.value|default_if_none:' '}}</p>
                 </div>
+                {% if count > 3 %}
+                    <img src="{% static "deps/image/noob.png" %}" alt="звание" class="rank_user">
+                {% endif %}
+            </div>
+            <div>
+                <a href="{% url "users:edit_profile" %}"><img src="{% static "deps/image/editor.png" %}" class="button_edit"></a>
             </div>
         </div>
-    <div class="text achievements">
-        <div class="achievements_header">
-            <p>ДОСТИЖЕНИЯ</p>
-        </div>
-        <div class="achievements_medal">
-            <img src="{% static "deps/image/medal.png" %}">
+    <a href="{% url "user:list_achive" %}">
+        <div class="text achievements">
+            <div class="achievements_header">
+                <p>ДОСТИЖЕНИЯ</p>
+            </div>
+            <div class="achievements_medal">
+                <img src="{% static "deps/image/medal.png" %}">
                 
                 <img src="{% static "deps/image/medal_blue_star.png" %}">
                 <img src="{% static "deps/image/medal_gold_star.png" %}">
                 <img src="{% static "deps/image/medal_fish.png" %}">
+            </div>
         </div>
-    </div>
+    </a>
+<a href="{% url "user:list_equipments" %}">
     <div class="rectangle_equpment">
         <div class="pictures_recomendtion">
         <div class="tent_pofile">
@@ -59,8 +66,12 @@
             СНАРЯЖЕНИЕ
         </div>
     </div>
+</a>
 </form>
-{% for image in users_uploads %}
-    <img src="{{image.image.url}}">
-{% endfor %}
+<a href="{% url "user:list_images" %}" class="button_uploads"><button class="text">Создать/Отредактировать</button></a>
+<div class="upload_images">
+    {% for image in users_uploads %}
+        <img src="{{image.image.url}}" id="upload_images">
+    {% endfor %}
+</div>
 {% endblock  %}

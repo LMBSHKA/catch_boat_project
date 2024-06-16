@@ -51,10 +51,10 @@ class ProfileForm(UserChangeForm):
             #"email",)
 
     image = forms.ImageField(required=False)
-    first_name = forms.CharField()
-    last_name = forms.CharField()
+    first_name = forms.CharField(required=False)
+    last_name = forms.CharField(required=False)
     username = forms.CharField()
-    about = forms.CharField()
+    about = forms.CharField(required=False)
     
     #email = forms.CharField()
 
@@ -62,8 +62,8 @@ class EditProfileForm(forms.ModelForm):
     image = forms.ImageField(required=False)
     email = forms.EmailField(max_length=100, widget=forms.EmailInput(attrs={'class': 'form-control'}))
     username = forms.CharField(max_length=40, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    first_name=forms.CharField(max_length=40, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    last_name=forms.CharField(max_length=40, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    first_name=forms.CharField(max_length=40, widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
+    last_name=forms.CharField(max_length=40, widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
     about = forms.CharField(max_length=300, widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
     class Meta:
         model=User
