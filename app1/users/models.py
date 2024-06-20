@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.urls import reverse
 
 
 class User(AbstractUser):
@@ -7,7 +8,7 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=10, blank=True, null=True)
     about = models.CharField(max_length= 300, blank=True, null=True)
     first_name = models.CharField(max_length=100, blank=True, null=True)
-    cat = models.ForeignKey('Upload_images', on_delete=models.DO_NOTHING, null=True)
+    cat = models.ForeignKey('Upload_images', on_delete=models.CASCADE, null=True)
 
     class Meta:
         db_table = 'user'
@@ -21,3 +22,4 @@ class Upload_images(models.Model):
     user_id = models.CharField(max_length=20, null=True, blank=True)
     image = models.ImageField(upload_to="images")
     category = models.CharField(max_length=256, null=True, blank=True)
+    likes = models.ManyToManyField(User, related_name='image_posts')

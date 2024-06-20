@@ -13,5 +13,7 @@ urlpatterns = [
     path('edit_profile/', views.UserEditView.as_view(), name='edit_profile'),
     path('list/', views.list_images, name='list_images'),
     path('list_achivements/', views.list_images_achivements, name='list_achive'),
-    path('list_equipments/', views.equipments, name='list_equipments')
+    path('list_equipments/', views.equipments, name='list_equipments'),
+    path("post/<int:pk>", views.PostDeatailView.as_view(), name='post_deatail'),
+    #path("profile/<int:pk>", views.other_profile, name="other_profile")
 ]

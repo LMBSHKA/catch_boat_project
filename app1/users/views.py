@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
 from django.views import generic
-from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 
+from django.core.paginator import Paginator
 from users.forms import ProfileForm, UploadForm, UserLoginForm, UserRegistrationForm, EditProfileForm
 from users.models import Upload_images, User
 
@@ -14,6 +15,17 @@ class UserEditView(generic.UpdateView):
     success_url = reverse_lazy('users:profile')
     def get_object(self):
         return self.request.user
+
+class PostDeatailView(generic.DeleteView):
+    model = Upload_images
+    template_name = "post.html"
+
+#def other_profile(request, pk):
+    #if request.user.is_authenticated:
+    #    profile = User.objects.get(pk=pk)
+    #    return render(request, "users/profile.html", {"profile": profile})
+    #else:
+    #    return redirect("index")
 
 
 def login(request):
@@ -63,6 +75,8 @@ def registration(request):
 
 @login_required
 def profile(request):
+    #if request.user.is_authenticated:
+        #profile = User.objects.get(id=pk)
     if request.method == 'POST':
         form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
         if form.is_valid():
@@ -79,6 +93,7 @@ def profile(request):
         'form': form,
         'users_uploads': users_uploads,
         'count': all_count,
+        #"profile": profile
     }
     return render(request, 'users/profile.html', context)
 
@@ -108,7 +123,14 @@ def list_images_achivements(request):
     return render(request, 'users/list_achive.html', context)
     
 def equipments(request):
-    return render(request, 'users/equipments.html')
+    if request.method == "POST":
+        Upload_images.objects.create(
+            user_id=request.user.id,
+            image=request.FILES.get('image'),
+            category='equipments')
+    users_uploads = Upload_images.objects.filter(user_id=request.user.id)
+    context = {'form': UploadForm(), 'users_uploads': users_uploads }
+    return render(request, 'users/equipments.html', context)
 
 @login_required
 def logout(request):

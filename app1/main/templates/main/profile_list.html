@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "deps\css\other-users.css" %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+{% endblock  %}
+
+{% block content %}
+<div class="search-container">
+    <form> 
+        <input type="text" name="text" class="search" placeholder="Поиск">
+        <input type="submit" name="submit" class="submit" value="Поиск">
+    </form>
+</div>
+{% if profiles %}
+<section class="other-users-container">
+    <ul class="ul">
+        {% for profile in profiles  %}
+         <li class="li">
+        <div class="other-users">
+            {% if profile.image %}
+                <img src="{{profile.image.url}}">
+            {% endif %}
+            <div class="users-information">
+                <h2>{{profile.first_name}} {{profile.last_name}}</h2>
+                <p>@{{profile.username}}</p>
+        </div>
+        <ul class="buttons">
+            <li><button class="follow">Отслеживать</button></li>
+            <li><button class="message">Сообщения</button></li>
+        </ul>
+        
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+</section>
+{% endif %}
+<!--{% if profiles %}
+    {% for profile in profiles  %}
+        {% if profile.image %}
+            image: <img src="{{profile.image.url}}">
+        {% endif %}
+        <br>
+        Username: {{profile.username}}
+        <br>
+        first_name: {{profile.first_name}}
+        <br>
+        
+    {% endfor %}
+{% endif %}-->
+{% endblock %}

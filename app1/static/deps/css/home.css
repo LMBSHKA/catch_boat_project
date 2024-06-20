@@ -23,19 +23,25 @@ body{
 .menu_galery{
     position: absolute;
     top: 15px;
-    left: 37%;
+    left: 32%;
+    text-decoration: none;
+    color:#FFFFFF;
 }
 
 .menu_location{
     position: absolute;
     top: 15px;
     left: 45%;
+    text-decoration: none;
+    color:#FFFFFF;
 }
 
 .menu_thing{
     position: absolute;
     top: 15px;
     left: 58%;
+    text-decoration: none;
+    color:#FFFFFF;
 }
 
 /*.vl {
@@ -222,6 +228,7 @@ button:hover:before {
 button.text{
     display: inline-block;
     border-radius: 25px;
+    border:0;
     transition: all .3s;
     overflow: hidden;
     z-index: 1;

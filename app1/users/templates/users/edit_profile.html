@@ -25,7 +25,7 @@
             </div>
             <div>
                 <h3>О себе</h3>
-                <input type="text" class="input about" name="about" placeholder="О себе" value="{{form.about.value|default_if_none:''}}">
+                <input maxlength="62" minlength="10" type="text" class="input about" name="about" placeholder="О себе" value="{{form.about.value|default_if_none:''}}">
             </div>
         </div>
         <div class="edit-block">
@@ -47,7 +47,12 @@
                 <img src="{% static "deps/image/defoult_profile.jpg" %}"
                         alt="Аватар пользователя" class="img-fluid rounded-circle" id="avatar">
             {% endif %}
-            <input type="file" id="id_image" name='image' accept="image/*">
+            <form method="post" enctype="multipart/form-data">
+                <label class="input-file">
+                       <input type="file" id="id_image" name='image' accept="image/*">    
+                       <span>Выберите файл</span>
+                 </label>
+            </form>
             {% if form.image.errors %}
                 <div class="alert alert-danger alert-dismissible fade show">{{form.image.errors}}</div>
             {% endif %}

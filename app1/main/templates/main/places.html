@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "deps/css/places.css" %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+{% endblock  %}
+
+{% block content %}
+<section class="edit-container">
+    <div class="search-container">
+        <form> 
+        <input type="text" name="text" class="search" placeholder="Поиск">
+        <input type="submit" name="submit" class="submit" value="Поиск">
+        </form>
+    </div>
+    <div class="places-container">
+        <div class="place">
+                <img src="{% static "deps/image/place1.jpg" %}">
+                <div class="place-information">
+                    <h2>На Дону</h2>
+                    <h4>РЫБА</h4>
+                    <p>Лещ, жерех, судак, красноперка, окунь, щука, сом, бычок, уклейка, тарань, карась</p>
+                    <h4>Когда ехать?</h4>
+                    <p>Круглый год</p>
+                    <p class="last">Порядка 70 видов рыб обитает в реке Дон, на которой стоят города-миллионники Воронеж и Ростов-на-Дону. Чаще на рыбалку едут в Ростовскую область. Бычок, который попадается на любую наживку, - самый популярный улов. Новички начинают тренироваться именно с него, а уже потом переходят к ловле более крупной рыбы.</p>
+                    <a href="https://www.google.com/maps/@49.6263667,41.7224565,3a,85y,174.14h,100.02t/data=!3m7!1e1!3m5!1sAF1QipMa0-mPdlY0gs9asklw1TA7oMPREPVWCqhvrT7C!2e10!3e12!7i6144!8i3072?coh=205409&entry=ttu"
+                    class="location">Локация</a>
+                </div>
+            
+                
+        </div>
+        
+        <div class="place">
+            <img src="{% static "deps/image/place2.jpg" %}">
+            <div class="place-information">
+                <h2>На Волге</h2>
+                <h4>РЫБА</h4>
+                <p>Сом, щука, судак, окунь, налим, язь, лещ, сазан, чехонь, вобла, жерех</p>
+                <h4>Когда ехать?</h4>
+                <p>Круглый год</p>
+                <p class="last">На Верхней Волге у рыбаков пользуется популярностью Тверская область. На Средней богаты рыбой Самара, Саратов, Татарстан. На Нижней — Астраханская и Волгоградская области. Особенно много желающих ловить рыбу весной и ранней осенью. Помимо самого процесса, тут потрясающе красивая природа, которой можно восхищаться бесконечно.</p>
+                <a href="https://www.google.com/maps/@53.610588,48.860191,3a,75y,60.6h,72.16t/data=!3m7!1e1!3m5!1sAF1QipNlQrdQNklutv0vKhFNfJDHYPO6whxgfk5ooqGZ!2e10!3e12!7i7168!8i3584?coh=205409&entry=ttu" class="location">Локация</a>
+            </div>
+
+
+        </div>
+        <div class="place">
+                <img src="{% static "deps/image/place3.jpg" %}">
+                <div class="place-information">
+                    <h2>Азовское море</h2>
+                    <h4>РЫБА</h4>
+                    <p>Тарань, лещ, пиленгас, жерех, сарган</p>
+                    <h4>Когда ехать?</h4>
+                    <p>Лето, осень, зима</p>
+                    <p class="last">Один из самых зарыбленных водоемов в мире. Здесь насчитывается более ста видов рыб. Вашим уловом станут барабулька, кефаль, жерех, сарган, пиленгас и многие другие. А вот азовская белуга, кумжа и севрюга — под охраной, за их вылов предусмотрен штраф. Рыбалка на Азовском море открыта круглый год, и лучше считается в начале осени.</p>
+                    
+                   <a href="https://www.google.com/maps/@47.2863373,39.1428724,0a,82.2y,136.07h,97.1t/data=!3m4!1e1!3m2!1sAF1QipO63x-HcfM61dKfqfrlykeUk0vSNU3awhIMXNHd!2e10?source=apiv3" class="location">Локация</a>
+                </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

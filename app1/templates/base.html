@@ -12,9 +12,9 @@
         <div class="rectangle_menu">
             <a class="logo_menu" href="{% url "main:index" %}">ЛОВИЛОДКУ</a>
             <div class="menu text">
-                <div class="menu_galery">ГАЛЕРЕЯ</div> 
-                <div class="menu_location">МЕСТА РЫБАЛКИ</div>
-                <div class="menu_thing">СНАРЯЖЕНИЕ</div>
+                <a href="{% url "main:profile_list" %}"><div class="menu_galery">ПОЛЬЗОВАТЕЛИ</div></a>
+                <a href="{% url "main:places" %}"><div class="menu_location">МЕСТА РЫБАЛКИ</div></a>
+                <a href="{% url "user:list_equipments" %}"><div class="menu_thing">СНАРЯЖЕНИЕ</div>
                 {% if not user.is_authenticated %}
                     <a class="button_login" href="{% url "user:login" %}"> <button class="text">Войти</button></a>
                     <a class="button_registration text" href="{% url "user:registration" %}"> <button class="text"> Регистрация </button></a>

@@ -3,8 +3,24 @@
 {% load static %}
 
 {% block css %}
+<link rel="stylesheet" href="{% static "deps/css/list.css" %}">
+
 {%endblock%}
 
 {% block content %}
-<h1>Equipment</h1>
+<div class="achv-container">
+    <h3>Снаряжение</h3>
+    <div class="form_for_upload_images">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.image}}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    {% for image in users_uploads %}
+        {% if image.category == "equipments" %}
+            <img src="{{image.image.url}}" id="upload_images">
+        {% endif %}
+    {% endfor %}
+</div>
 {% endblock%}

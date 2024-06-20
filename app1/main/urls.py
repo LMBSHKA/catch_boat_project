@@ -21,4 +21,6 @@ app_name = 'main'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('profile_list/', views.profile_list, name="profile_list"),
+    path('places/', views.places, name='places')
 ]

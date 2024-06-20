@@ -35,7 +35,7 @@
     <a href="{% url "user:list_achive" %}">
         <div class="text achievements">
             <div class="achievements_header">
-                <p>ДОСТИЖЕНИЯ</p>
+                <p>достижения</p>
             </div>
             <div class="achievements_medal">
                 <img src="{% static "deps/image/medal.png" %}">
@@ -63,7 +63,7 @@
         </div>
     </div>
         <div class="text_equpment text">
-            СНАРЯЖЕНИЕ
+            снаряжение
         </div>
     </div>
 </a>
@@ -71,7 +71,7 @@
 <a href="{% url "user:list_images" %}" class="button_uploads"><button class="text">Создать/Отредактировать</button></a>
 <div class="upload_images">
     {% for image in users_uploads %}
-        <img src="{{image.image.url}}" id="upload_images">
+        <a href="{% url "user:post_deatail" image.pk %}"><img src="{{image.image.url}}" id="upload_images"></a>
     {% endfor %}
 </div>
 {% endblock  %}

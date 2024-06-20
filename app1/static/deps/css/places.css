@@ -1,0 +1,115 @@
+@font-face{
+    font-family: "Molot";
+    src: url("fonts/Molot.otf") format("opentype");
+}
+
+@font-face{
+    font-family: "Gilroy";
+    src: url("fonts/Gilroy-Light.otf") format("opentype");
+}
+
+@font-face{
+    font-family: Helvetica;
+    src: url("fonts/helvetica_regular.otf") format("opentype");
+}
+body{
+    width:1440px;
+    margin:0 auto;
+    
+}
+.search-container{
+    margin-left:85px;
+    margin-top:50px;
+
+    background-color:rgba(28, 93, 153, 1);
+    padding:11px 12px 12px 982px;
+    border-radius: 30px;
+    width:340px;
+    
+
+
+}
+form {
+    width:400px;
+    margin:auto;
+    }
+    input{
+    padding:4px 10px;
+    border-radius:25px;
+    border:0;
+    font-size:16px;
+    }
+    .search {
+    width: 50%;
+    }
+    .submit{
+    width: 70px;
+    background-color: #1c87c9;
+    color:#ffffff;
+    }
+  
+.places-container{
+    margin-top:50px;
+    padding:12px;
+    background: rgba(28, 93, 153, 1);
+    border-radius:30px;
+}
+.place{
+    border-radius:18px;
+    background: rgba(50, 109, 163, 1);
+    display:flex;
+    margin-bottom:20px;
+
+}
+.place img{
+    width:365px;
+    height:390px;
+    border-radius:18px;
+    object-fit: cover;
+    margin-right:15px;
+}
+.place-information {
+    margin-top:15px;
+    
+}
+.place-information h2{
+    margin:0;
+    margin-bottom: 30px;
+    font-family:"Helvetica";
+    font-weight:700;
+    font-size:50px;
+    color:#FFFFFF;
+}
+.place-information h4{
+    margin:0;
+    font-family:"Helvetica";
+    font-weight:800;
+    font-size:20px;
+    color:#FFFFFF;
+}
+.place-information p{
+    margin:0;
+    margin-bottom: 20px;
+    font-family:"Helvetica";
+    font-weight:500;
+    font-size:20px;
+    color:#FFFFFF;
+}
+.last{
+    margin:0;
+    padding:0;
+}
+.location{
+    margin:0;
+    border:0;
+    border-radius:25px;
+    background-color:#FFFFFF;
+    text-decoration: none;
+    margin-left:937px;
+    font-family:"Helvetica";
+    font-size:20px;
+    font-weight:400;
+    color:rgba(28, 93, 153, 1);
+    padding:8px;
+    
+}
